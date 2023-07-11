@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Greenatom-test-front-3/static/css/main.b495a764.css",
+    "main.js": "/Greenatom-test-front-3/static/js/main.ded2781b.js",
+    "static/js/787.97a945da.chunk.js": "/Greenatom-test-front-3/static/js/787.97a945da.chunk.js",
+    "index.html": "/Greenatom-test-front-3/index.html",
+    "main.b495a764.css.map": "/Greenatom-test-front-3/static/css/main.b495a764.css.map",
+    "main.ded2781b.js.map": "/Greenatom-test-front-3/static/js/main.ded2781b.js.map",
+    "787.97a945da.chunk.js.map": "/Greenatom-test-front-3/static/js/787.97a945da.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b495a764.css",
+    "static/js/main.ded2781b.js"
+  ]
+}
