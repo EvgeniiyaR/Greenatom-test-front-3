@@ -16,5 +16,14 @@ export interface IInput {
 }
 
 export interface ITask {
+  complete: boolean;
   text: string;
+  id: number;
+  oddColor: string;
+  evenColor: string;
+}
+
+export interface IAssignment {
+  value: string;
+  isComplete: boolean;
 }

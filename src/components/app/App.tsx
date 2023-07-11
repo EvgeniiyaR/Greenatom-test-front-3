@@ -8,29 +8,45 @@ import AppStore from '../../stores/AppStore';
 import Task from '../task/Task';
 
 const App = observer(() => {
-  const { changeColor, handleChange, task, isEmptyTask, handleSubmitAdd, handleClickDeleteAll, tasks } = AppStore;
+  const {
+    changeColor,
+    handleChange,
+    task,
+    isEmptyTask,
+    handleSubmitAdd,
+    handleClickDeleteAll,
+    tasks,
+    handleClickSelectEvenElements,
+    handleClickSelectOddElements,
+    generateColor,
+    handleClickDeleteFirstElement,
+    handleClickDeleteLastElement
+  } = AppStore;
 
   useEffect(() => {
     changeColor();
   }, []);
 
+  const oddColor = generateColor();
+  const evenColor = generateColor();
+
   return (
     <main className='main'>
       <form name="form" className='main__prime' onSubmit={handleSubmitAdd}>
-        <Input label='Задача' name='task' type='text' onChange={handleChange} value={task} isEmpty={isEmptyTask} />
+        <Input label='Задача' name='task' type='text' onChange={handleChange} value={task.value} isEmpty={isEmptyTask} />
         <Button typeButton='submit' text='Добавить' />
       </form>
       <div className='main__extra'>
         <ButtonExtra typeButton='button' text='Очистить' onClick={handleClickDeleteAll}/>
-        <ButtonExtra typeButton='button' text='Выделить четные элементы' onClick={handleClickDeleteAll}/>
-        <ButtonExtra typeButton='button' text='Выделить нечетные элементы' onClick={handleClickDeleteAll}/>
-        <ButtonExtra typeButton='button' text='Удалить последний элемент' onClick={handleClickDeleteAll}/>
-        <ButtonExtra typeButton='button' text='Удалить первый элемент' onClick={handleClickDeleteAll}/>
+        <ButtonExtra typeButton='button' text='Выделить четные элементы' onClick={handleClickSelectEvenElements}/>
+        <ButtonExtra typeButton='button' text='Выделить нечетные элементы' onClick={handleClickSelectOddElements}/>
+        <ButtonExtra typeButton='button' text='Удалить последний элемент' onClick={handleClickDeleteLastElement}/>
+        <ButtonExtra typeButton='button' text='Удалить первый элемент' onClick={handleClickDeleteFirstElement}/>
       </div>
       <ul className='main__list'>
         {tasks.map((item, index) => (
-          <li className="main__item" key={index}>
-            <Task text={item} />
+          <li key={index}>
+            <Task text={item.value} complete={item.isComplete} id={index} oddColor={oddColor} evenColor={evenColor}/>
           </li>
         ))}
       </ul>
