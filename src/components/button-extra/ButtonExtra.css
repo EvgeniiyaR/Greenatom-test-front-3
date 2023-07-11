@@ -1,0 +1,21 @@
+.main__button-extra {
+  box-sizing: border-box;
+  width: 100%;
+  border: 5px solid;
+  padding: 10px;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, .2);
+  transition: background-color .2s;
+}
+
+.main__button-extra:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+@media screen and (max-width: 600px) {
+  .main__button-extra {
+    width: calc(300px + (500 - 300) * (100vw - 320px) / (600 - 320));
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,26 @@
+.main__input {
+  box-sizing: border-box;
+  border: 5px solid;
+  padding: 10px;
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+@keyframes shake {
+	0%, 100% {transform: translateX(0); border-color: red;}
+	10%, 30%, 50%, 70%, 90% {transform: translateX(-10px); border-color: red;}
+	20%, 40%, 60%, 80% {transform: translateX(10px); border-color: red;}
+}
+
+.shake {
+  animation: shake 1s ease infinite;
+}
+
+@media screen and (max-width: 600px) {
+  .main__input {
+    font-size: 1rem;
+    width: calc(300px + (500 - 300) * (100vw - 320px) / (600 - 320));
+  }
+}
