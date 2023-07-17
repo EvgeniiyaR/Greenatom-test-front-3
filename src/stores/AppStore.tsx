@@ -15,6 +15,9 @@ class AppStore {
   public isEdit: boolean = false;
   public editIndex: number | null = null;
   private body: HTMLElement;
+  public oddColor: string = '';
+  public evenColor: string = '';
+  public mainColor: string = '';
 
   constructor() {
     makeAutoObservable(this);
@@ -25,8 +28,9 @@ class AppStore {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
   }
 
-  public changeColor = () => {
-    this.body.style.backgroundColor = `${this.generateColor()}`;
+  public changeColor = (mainColor: string) => {
+    this.mainColor = mainColor;
+    this.body.style.backgroundColor = `${mainColor}`;
     this.body.style.transition = 'background-color 1s';
   };
 
@@ -68,11 +72,31 @@ class AppStore {
   }
 
   public handleClickSelectEvenElements = () => {
-    this.isEven = true;
+    if (!this.isOdd) {
+      if (this.isEven) {
+        this.isEven = false;
+      } else {
+        this.isEven = true;
+        this.evenColor = this.generateColor();
+        while (this.mainColor === this.evenColor) {
+          this.evenColor = this.generateColor();
+        }
+      }
+    }
   }
 
   public handleClickSelectOddElements = () => {
-    this.isOdd = true;
+    if (!this.isEven) {
+      if (this.isOdd) {
+        this.isOdd = false;
+      } else {
+        this.isOdd = true;
+        this.oddColor = this.generateColor();
+        while (this.mainColor === this.oddColor) {
+          this.oddColor = this.generateColor();
+        }
+      }
+    }
   }
 
   public handleClickDeleteFirstElement = () => {

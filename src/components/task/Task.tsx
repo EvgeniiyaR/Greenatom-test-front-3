@@ -14,10 +14,10 @@ const Task = observer(({ text, complete, id, oddColor, evenColor }: ITask) => {
         <button className='main__action' type="button" onClick={() => handleClickEditSave(id)}>🆗</button>
       </div>
       :
-      <div className='main__task' style={{backgroundColor: `${((id % 2 === 0 && isOdd) && oddColor) || ((id % 2 !== 0 && isEven) && evenColor)}`}}>
+      <div className='main__task' style={{backgroundColor: `${(isOdd || isEven) ? (((id % 2 === 0 && isOdd && !isEven) && oddColor) || ((id % 2 !== 0 && isEven && !isOdd) && evenColor)) : ''}`}}>
         <p className={`main__title ${complete ? 'main__title_active' : ''}`}>{text}</p>
         <div className='main__actions'>
-          <button className='main__action' type="button" onClick={() => handleClickEdit(id)}>✐</button>
+          {!complete && <button className='main__action' type="button" onClick={() => handleClickEdit(id)}>✐</button>}
           <button className={`main__action ${complete ? 'main__action_active' : ''}`} type="button" onClick={() => handleClickComplete(id)}>✔</button>
           <button className='main__action' type="button" onClick={() => handleClickDelete(id)}>❌</button>
         </div>

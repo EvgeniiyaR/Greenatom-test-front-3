@@ -10,6 +10,7 @@ import Task from '../task/Task';
 const App = observer(() => {
   const {
     changeColor,
+    generateColor,
     handleChange,
     task,
     isEmptyTask,
@@ -18,17 +19,16 @@ const App = observer(() => {
     tasks,
     handleClickSelectEvenElements,
     handleClickSelectOddElements,
-    generateColor,
     handleClickDeleteFirstElement,
-    handleClickDeleteLastElement
+    handleClickDeleteLastElement,
+    oddColor,
+    evenColor
   } = AppStore;
 
   useEffect(() => {
-    changeColor();
+    const mainColor = generateColor();
+    changeColor(mainColor);
   }, []);
-
-  const oddColor = generateColor();
-  const evenColor = generateColor();
 
   return (
     <main className='main'>
